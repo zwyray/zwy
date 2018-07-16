@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
   def index
     @serach = request
-  end
+    put '------------'
+    put @serach.ip
+    put @serach.user_agent
 end
