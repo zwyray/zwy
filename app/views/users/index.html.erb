@@ -21,8 +21,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr id='<%= user.id %>'>
-        <td><%= user.created_at%></td>
-        <td><%= link_to user.url, user %></td>
+        <td title='<%= user.created_at %>'><%= user.created_at.to_s(:short)%></td>
+        <td title='<%= user.url %>'><%= link_to user.url.split('/')[3..-1].join('/'), user %></td>
         <td><%= user.ip %></td>
         <td><%= user.port %></td>
         <td><%= user.host %></td>
