@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     user.port = request.port
     user.url = request.url
     user.host = request.host
+    user.referer = request.referer
     user.agent = request.user_agent
     user.save
-    @users = User.all
+    @users = User.order("id desc").page params[:page]
   end
 
   # GET /users/1

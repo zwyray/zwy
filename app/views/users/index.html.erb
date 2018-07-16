@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
-
 <table class="table table-sm">
   <thead>
     <tr>
@@ -10,6 +8,7 @@
       <th>Ip</th>
       <th>Port</th>
       <th>Host</th>
+      <th>Referer</th>
       <th>Agent</th>
       <th colspan="1"></th>
     </tr>
@@ -23,9 +22,11 @@
         <td><%= user.ip %></td>
         <td><%= user.port %></td>
         <td><%= user.host %></td>
-        <td><%= user.agent[0..50] %></td>
-        <td><%= link_to '╳', user, class:"text-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.referer %></td>
+        <td title='<%=user.agent%>'><%= user.agent[0..25] %></td>
+        <td><%= link_to '╳', user, class:"text-danger", method: :delete%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @users, theme: 'twitter-bootstrap-4'%>
