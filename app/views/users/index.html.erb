@@ -1,5 +1,9 @@
-<p id="notice"><%= notice %></p>
 
+<div class="h3 text-center">
+  <p class="alert alert-primary" id="notice">
+    <%= notice %>
+  </p>
+<div>
 <table class="table table-sm">
   <thead>
     <tr>
@@ -16,15 +20,15 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
-      <td><%= user.created_at%></td>
-      <td><%= link_to user.url, user %></td>
+      <tr id='<%= user.id %>'>
+        <td><%= user.created_at%></td>
+        <td><%= link_to user.url, user %></td>
         <td><%= user.ip %></td>
         <td><%= user.port %></td>
         <td><%= user.host %></td>
         <td><%= user.referer %></td>
         <td title='<%=user.agent%>'><%= user.agent[0..25] %></td>
-        <td><%= link_to '╳', user, class:"text-danger", method: :delete%></td>
+        <td><%= link_to '╳', user, class:"text-danger", data: { method: :delete, remote: true} %></td>
       </tr>
     <% end %>
   </tbody>
