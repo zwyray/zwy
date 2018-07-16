@@ -31,7 +31,11 @@
         <% else %>
         <td></td>
         <% end %>
+        <% if user.agent %>
         <td title='<%=user.agent%>'><%= user.agent[0..25] %></td>
+        <% else %>
+        <td></td>
+        <% end %>
         <td><%= link_to '╳', user, class:"text-danger", data: { method: :delete, remote: true} %></td>
       </tr>
     <% end %>
