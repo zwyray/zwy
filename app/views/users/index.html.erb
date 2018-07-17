@@ -4,7 +4,7 @@
     <%= notice %>
   </p>
 <div>
-<table class="table table-sm">
+<table class="table">
   <thead>
     <tr>
       <th>time</th>
@@ -36,9 +36,9 @@
         <% else %>
         <td></td>
         <% end %>
-        <td><%= link_to '╳', user, class:"text-danger", data: { method: :delete, remote: true} %></td>
+        <td><%= link_to '╳', user, style:"color: red;", data: { method: :delete, remote: true} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @users, theme: 'twitter-bootstrap-4'%>
+<%= paginate @users%>
