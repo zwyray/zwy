@@ -12,8 +12,12 @@ class UsersController < ApplicationController
     user.referer = request.referer
     user.agent = request.user_agent
     user.save
-    @users = User.order("id desc").page params[:page]
   end
+
+  def all
+    @users = User.order("id desc").page(params[:page]).per(40)
+  end
+
 
   # GET /users/1
   # GET /users/1.json

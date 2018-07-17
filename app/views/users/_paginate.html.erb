@@ -1,0 +1,3 @@
+<% if(@users.total_pages rescue nil) %>
+    <%= paginate @users , remote: true%>
+<% end %>

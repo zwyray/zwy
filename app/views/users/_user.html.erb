@@ -1,0 +1,37 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>time</th>
+      <th>Url</th>
+      <th>Ip</th>
+      <th>Port</th>
+      <th>Host</th>
+      <th>Referer</th>
+      <th>Agent</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+        <tr id='<%= user.id %>'>
+            <td title='<%= user.created_at %>'><%= user.created_at.to_s(:short)%></td>
+            <td title='<%= user.url %>'><%= user.url.split('/')[3..-1].join('/') %></td>
+            <td><%= link_to user.ip, user%></td>
+            <td><%= user.port %></td>
+            <td><%= user.host %></td>
+            <% if user.referer %>
+            <td title='<%= user.referer %>'><%= user.referer.split('/')[3..-1].join('/') %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <% if user.agent %>
+            <td title='<%=user.agent%>'><%= user.agent[0..25] %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td><%= link_to '╳', user, style:"color: red;", data: { method: :delete, remote: true} %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
